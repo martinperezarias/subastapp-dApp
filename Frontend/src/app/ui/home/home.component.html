@@ -1,0 +1,55 @@
+<div class="body">
+
+  <mat-card class="auction-container">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>Anonymus</mat-card-title>
+      <mat-card-subtitle>Mercedes-Benz 300 SLR</mat-card-subtitle>
+      <button mat-raised-button color="accent" *ngIf="loggedWallet === maxBetData?.currentOwner" class="close-auction" (click)="transferOwnerShip()">CLOSE AUCTION</button>
+    </mat-card-header>
+    
+    <img mat-card-image src="../../../assets/auction-car.jpg" alt="">
+    <mat-card-subtitle *ngIf="maxBetData">Seller: {{this.maxBetData.currentOwner}}</mat-card-subtitle>
+    
+    <mat-divider></mat-divider>
+
+    <mat-card-content class="content-container">
+      <div *ngIf="maxBetData"> 
+        <h3>CURRENT BID ({{this.maxBetData.bids}})</h3>
+        <div class="bid-info amount">
+          <mat-icon matSuffix>payments</mat-icon>
+          <strong>
+            {{this.maxBetData.amount}} ETH
+          </strong>
+        </div>
+        <div class="bid-info">
+          <mat-icon matSuffix>person</mat-icon>
+          <p>
+            {{this.maxBetData.winnerAddress}}
+          </p>
+        </div>
+        
+        <div class="bid-info">
+          <mat-icon (click)="moreTime()" matSuffix>timer</mat-icon>
+          <p>
+            {{this.timeleft}} seconds left
+          </p>
+        </div>
+
+        
+      </div>
+    </mat-card-content>
+    &nbsp;
+    <mat-card-actions class="input-container">
+      <form [formGroup]="bidForm">
+        <mat-form-field appearance="outline">
+          <mat-label>Amount</mat-label>
+          <input matInput type="number" min=0 placeholder="Placeholder" formControlName="amount">
+          <mat-icon matSuffix>attach_money</mat-icon>
+          <mat-hint></mat-hint>
+        </mat-form-field>
+      </form>
+      <button mat-raised-button color="accent" [disabled]="noMoreBids || loggedWallet == maxBetData?.currentOwner" (click)="newBet()">NEW BID</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

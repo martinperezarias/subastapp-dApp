@@ -1,0 +1,64 @@
+.body {
+  max-width: 450px;
+  margin: 24px auto;
+  font-family: 'Roboto', sans-serif;
+  position: relative;
+}
+
+.auction-container {
+
+  .close-auction {
+    background: rgba(190, 38, 38, 0.719);
+    color: #fff;
+    position: absolute;
+    top: 6px;
+    right: 6px;
+  }
+  
+  .example-header-image {
+    background-image: url('../../../assets/anonymus.jpg');
+    background-size: cover;
+  }
+
+  .content-container {
+    margin-top: 28px;
+    h3 {
+      font-size: 28px;
+      text-align: center;
+    }
+
+    .bid-info {
+      display: flex;
+      align-items: center;
+      .mat-icon {
+        margin: 0 6px;
+        cursor: pointer;
+      }
+    }
+
+    .amount {
+      font-size: 20px;
+      margin-bottom: 12px;
+    }
+  }
+
+  .input-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    button {
+      background: rgb(24, 136, 52);
+      color: #fff;
+      margin-top: 4px;
+      height: 58px;
+      transition: all .4s ease-in-out;
+    }
+    button:disabled {
+      opacity: .5;
+    }
+  }
+}
+
+::ng-deep.mat-form-field-flex {
+  align-items: center !important;
+}
